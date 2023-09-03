@@ -12,7 +12,6 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 import pywavefront
-console.info("RE:WORLD")
 console.info("Main/Render : Game init")
 modding.init()
 
@@ -34,7 +33,7 @@ player_camera_rotation_x = 0 # Je sais pas quoi mettre...
 player_camera_rotation_y = 0 # Ici aussi  
 
 def load_object(pathobj,pathtexture):
-    scene = pywavefront.Wavefront(path, collect_faces=True)
+    scene = pywavefront.Wavefront(pathobj, collect_faces=True)
 
     glPushMatrix()
     glTranslatef(0, 0, -2.5)
@@ -67,7 +66,7 @@ while running:
     
     glPushMatrix()
     glTranslatef(player_x, player_y, player_z)
-    draw_cube(pathobj="assets/cube/cube.obj")
+    load_object(pathobj="assets/cube/cube.obj",pathtexture="rien")
     glPopMatrix()
     
     pygame.display.flip()
