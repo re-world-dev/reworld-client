@@ -12,6 +12,7 @@ from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
 import pywavefront
+console.info("RE:WORLD")
 console.info("Main/Render : Game init")
 modding.init()
 
