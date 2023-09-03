@@ -2,7 +2,7 @@ import os
 import threading
 import time
 from libs import console
-.
+
 # Global variable to signal threads to stop
 stop_threads = False
 
