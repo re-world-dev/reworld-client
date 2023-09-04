@@ -12,12 +12,31 @@ def start_the_game():
     # Do the job here !
     pass
 
-menu = pygame_menu.Menu('Welcome', 800, 600,
-                       theme=pygame_menu.themes.THEME_BLUE)
+def solo():
+    #
+    pass
 
-menu.add.text_input('Pseudo : ', default='John Doe')
-menu.add.selector('Mode :', [('Connexion serveur', 1), ('Lancer serveur solo', 2)], onchange=set_difficulty)
-menu.add.button('Jouer', start_the_game)
-menu.add.button('Quitter', pygame_menu.events.EXIT)
+def multiplayer():
+    #
+    pass
 
-menu.mainloop(window)
+def mods():
+    #
+    pass
+
+mytheme=pygame_menu.themes.THEME_DARK.copy()
+mytheme.widget_font = pygame_menu.font.FONT_MUNRO
+mytheme.title_font = pygame_menu.font.FONT_MUNRO
+
+login = pygame_menu.Menu('eletrixworld', 800, 600, theme=mytheme)
+
+pseudo = login.add.text_input('Pseudo : ', default='Elon Musk')
+password = login.add.text_input('Password : ', default='123')
+login.add.selector("", [('Se connecter', 1), ('Creer un compte', 2)], onchange=set_difficulty)
+login.add.button('SOLO', solo)
+login.add.button('MULTIJOUEUR', multiplayer)
+login.add.button('Mods', mods)
+login.add.button('Effectuer action', start_the_game)
+login.add.button('Quitter', pygame_menu.events.EXIT)
+
+login.mainloop(window)
