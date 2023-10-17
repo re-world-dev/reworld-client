@@ -1,6 +1,12 @@
+#===================
+#     RE:WORLD
+#===================
+# Network Libraries
+
 authenfication_serverip = "pasdefini"
 
-
+import requests
+import console
 
 def ipcheck(ip): # Permet de verifier l'ip si elle est bans
     try:
@@ -11,5 +17,5 @@ def ipcheck(ip): # Permet de verifier l'ip si elle est bans
         elif x.text == "banned":
             return("banned")
     except requests.exceptions.RequestException as e:
-        alert(text=f"RE:Network request failed : {e}")
+        console.alert(text=f"RE:Network request failed : {e}")
         pass

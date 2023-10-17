@@ -1,3 +1,5 @@
+from os import environ
+
 #===================
 #     RE:WORLD
 #===================
@@ -5,71 +7,40 @@
 # Libs import
 import modding #RML (reworld mod loader)
 from libs import console 
-# Import of engine
-import pygame
-from pygame.locals import *
-from OpenGL.GL import *
-from OpenGL.GLUT import *
-from OpenGL.GLU import *
-import pywavefront
+from pydub import AudioSegment
+from pydub.playback import play
+from libs import assetsconf
+loading_screen = None
+console.info("-----------------------------")
+console.info("RE:WORLD")
+console.info("2023 The RE:WORLD project")
+console.info("-----------------------------")
+console.info("Discord : https://discord.gg/EauquJY6aQ")
+
 console.info("Main/Render : Game init")
 modding.init()
+from ursina import *
+from ursina.prefabs.first_person_controller import FirstPersonController
+from direct.stdpy import thread 
 
-pygame.init()
+app = Ursina(development_mode=True)
+window.title = "RE:World"
 
+def home_menu():
+    # Sky(texture=modding.sky_getskypath())
+    Text.default_resolution = 1080 * Text.size
+    test = Text(text="RE:WORLD", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+    bplay = Button(text='Play', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
+    bplay.on_click = application.quit
+    bplay.tooltip = Tooltip('Start a new journey')
+    bpExit = Button(text='Exit', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+    bpExit.on_click = application.quit
+    bpExit.tooltip = Tooltip('Exit')
 
-window_size = (800, 600)
-screen = pygame.display.set_mode(window_size, DOUBLEBUF | OPENGL)
+if __name__ == '__main__':
+    app = Ursina()
 
+    screen = None  # for global statement
 
-gluPerspective(45, (window_size[0] / window_size[1]), 0.1, 50.0)
-glTranslatef(0.0, 0.0, -5)
-pygame.display.set_caption("RE:WORLD | BETA V0.1")
-
-player_x = 0
-player_y = 0
-player_z = -5  # Le joueur commence en arrière
-player_camera_rotation_x = 0 # Je sais pas quoi mettre...
-player_camera_rotation_y = 0 # Ici aussi  
-
-def load_object(pathobj,pathtexture):
-    scene = pywavefront.Wavefront(pathobj, collect_faces=True)
-
-    glPushMatrix()
-    glTranslatef(0, 0, -2.5)
-    glBegin(GL_TRIANGLES)
-    for face in scene.mesh_list[0].faces:
-        for vertex_id in face:
-            vertex = scene.vertices[vertex_id]
-            glVertex3fv(vertex)
-    glEnd()
-    glPopMatrix()
-
-
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_z]:
-        player_z += 0.1  
-    if keys[pygame.K_s]:
-        player_z -= 0.1  
-    if keys[pygame.K_d]:
-        player_x -= 0.1
-    if keys[pygame.K_q]:
-        player_x += 0.1
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-    
-    glPushMatrix()
-    glTranslatef(player_x, player_y, player_z)
-    load_object(pathobj="assets/cube/cube.obj",pathtexture="rien")
-    glPopMatrix()
-    
-    pygame.display.flip()
-    pygame.time.wait(10)
-modding.stop_mods() # Buggé
-pygame.quit()
+    home_menu()
+    app.run()

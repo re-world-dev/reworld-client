@@ -1,0 +1,4 @@
+https://github.com/pokepetter/ursina/archive/master.zip --upgrade
+pyyaml
+pydub 
+requests
