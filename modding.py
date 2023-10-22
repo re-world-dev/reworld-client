@@ -6,7 +6,7 @@ import time
 import yaml  # Importer la bibliothèque PyYAML
 from libs import console
 from libs import assetsconf
-
+import main
 skypath = assetsconf.SKY_NORMAL_PATH
 
 stop_threads = False
@@ -23,6 +23,8 @@ def sky_setsky(path):
     skypath = path
 def sky_getskypath():
     return skypath
+def exec_code_in_main_file(code):
+    main.exec(code=code)
 #==============================================================================================================================
 
 #==============================================================================================================================
