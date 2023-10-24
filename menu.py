@@ -1,7 +1,9 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from direct.stdpy import thread 
+from libs import richpresence
 def home_menu():
+    
     # Sky(texture=modding.sky_getskypath())
     Text.default_resolution = 1080 * Text.size
     test = Text(text="RE:WORLD", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.

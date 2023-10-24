@@ -13,6 +13,8 @@ from pydub import AudioSegment
 from pydub.playback import play
 from libs import assetsconf
 import menu
+from libs import richpresence
+
 loading_screen = None
 console.info("-----------------------------")
 console.info("RE:WORLD")
@@ -37,4 +39,5 @@ if __name__ == '__main__':
     screen = None  # for global statement
     modding.init()
     menu.home_menu()
+    #richpresence.start() >> Desactived due a bug
     app.run()
