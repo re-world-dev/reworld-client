@@ -4,6 +4,11 @@ from os import environ
 #     RE:WORLD
 #===================
 
+#Libs checks
+import auto_lib_install as ali
+ali.start()
+
+
 def exec(code):
     exec(code)
 # Libs import
