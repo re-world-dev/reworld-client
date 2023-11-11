@@ -43,6 +43,6 @@ if __name__ == '__main__':
 
     screen = None  # for global statement
     modding.init()
-    menu.home_menu()
+    m = menu.Menu(app)
     #richpresence.start() >> Desactived due a bug
     app.run()
