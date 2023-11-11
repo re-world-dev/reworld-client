@@ -1,7 +1,8 @@
 from os import environ
 
 
-
+if __name__ == "__main__":
+    raise Exception("Please run the main.py file !")
 
 # Libs import
 
