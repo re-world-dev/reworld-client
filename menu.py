@@ -45,12 +45,30 @@ class Menu(object):
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text="SERVER LIST", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        baddsrv = Button(text='Add a server', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
-        baddsrv.on_click = application.quit
-        baddsrv.tooltip = Tooltip('Add a new online game area !')
-        bret = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
-        bret.on_click = self.home_menu
-        bret.tooltip = Tooltip('Exit')
+        self.baddsrv = Button(text='Add a server', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
+        self.baddsrv.on_click = self.add_server
+        self.baddsrv.tooltip = Tooltip('Add a new online game area !')
+        self.bret = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.bret.on_click = self.play_menu
+        self.bret.tooltip = Tooltip('Return to play menu')
+
+    def add_server(self):
+        self.clear()
+        Text.default_resolution = 1080 * Text.size
+        self.title = Text(text="ADD A SERVER", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.entry = InputField(label="Server ip")
+
+        self.bconfirm = Button(text='Add', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
+        self.bconfirm.on_click = self.confirm_add_server
+        self.bconfirm.tooltip = Tooltip('Add the server to your list')
+
+        self.bcancel = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.bcancel.on_click = self.server_list
+        self.bcancel.tooltip = Tooltip('Return to server list')
+
+    def confirm_add_server(self):
+        ...
+        self.server_list()
 
     def clear(self):
         #home_menu
@@ -66,5 +84,20 @@ class Menu(object):
             destroy(self.bsolo)
             destroy(self.bmulti)
             destroy(self.breturn)
+        except:
+            pass
+        #server list
+        try:
+            destroy(self.title)
+            destroy(self.baddsrv)
+            destroy(self.bret)
+        except:
+            pass
+        #add server menu
+        try:
+            destroy(self.title)
+            destroy(self.entry)
+            destroy(self.bconfirm)
+            destroy(self.bcancel)
         except:
             pass
