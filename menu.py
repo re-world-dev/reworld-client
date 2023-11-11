@@ -11,7 +11,18 @@ class Menu(object):
         self.app = app
         self.server_list_ips = []
         self.server_objects = []
+        self.load_servers()
         self.home_menu()
+
+    def load_servers(self):
+        """Load the servers from the file"""
+        with open("saves/servers/serverlist.txt", 'r') as file:
+            servers = file.read()
+            lst_srv = servers.split("\n")
+            for srv in lst_srv:
+                if srv == "":
+                    continue
+                self.server_list_ips.append(srv)
 
     def home_menu(self):
         self.clear()
@@ -76,6 +87,8 @@ class Menu(object):
     def confirm_add_server(self):
         ip = self.entry.text
         self.server_list_ips.append(ip)
+        with open("saves/servers/serverlist.txt", 'a') as file:
+            file.write(ip + "\n")
         self.server_list()
 
     def clear(self):
