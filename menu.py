@@ -9,6 +9,8 @@ if __name__ == "__main__":
 class Menu(object):
     def __init__(self, app):
         self.app = app
+        self.server_list_ips = []
+        self.server_objects = []
         self.home_menu()
 
     def home_menu(self):
@@ -52,22 +54,28 @@ class Menu(object):
         self.bret.on_click = self.play_menu
         self.bret.tooltip = Tooltip('Return to play menu')
 
+        for i, ip in enumerate(self.server_list_ips):
+            btn = Button(text=ip, y=i*-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+            #btn.on_click = self.connect
+            self.server_objects.append(btn)
+
     def add_server(self):
         self.clear()
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="ADD A SERVER", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.entry = InputField(label="Server ip")
+        self.title = Text(text="ADD A SERVER", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.entry = InputField(label="Server ip", wordwrap=10)
 
-        self.bconfirm = Button(text='Add', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
+        self.bconfirm = Button(text='Add', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.1)
         self.bconfirm.on_click = self.confirm_add_server
         self.bconfirm.tooltip = Tooltip('Add the server to your list')
 
-        self.bcancel = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.bcancel = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.2)
         self.bcancel.on_click = self.server_list
         self.bcancel.tooltip = Tooltip('Return to server list')
 
     def confirm_add_server(self):
-        ...
+        ip = self.entry.text
+        self.server_list_ips.append(ip)
         self.server_list()
 
     def clear(self):
@@ -99,5 +107,11 @@ class Menu(object):
             destroy(self.entry)
             destroy(self.bconfirm)
             destroy(self.bcancel)
+        except:
+            pass
+        try:
+            for i in self.server_objects:
+                destroy(i)
+            self.server_objects = []
         except:
             pass
