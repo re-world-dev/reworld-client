@@ -14,6 +14,7 @@ class Menu(object):
         self.server_list_ips = []
         self.server_objects = []
         self.load_servers()
+        #Entity(model='cube', texture='assets/background/homemenu/background.png')
         self.home_menu()
 
     def load_servers(self):
@@ -29,6 +30,7 @@ class Menu(object):
     def home_menu(self):
         self.clear()
         # Sky(texture=modding.sky_getskypath())
+        Sky(texture="assests/background/homemenu/background3.png")
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text="RE:WORLD", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
         self.bplay = Button(text="Play", y=0, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))

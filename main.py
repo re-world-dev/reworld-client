@@ -33,13 +33,19 @@ from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from direct.stdpy import thread 
 
-app = Ursina(development_mode=True)
-window.title = "RE:World"
+# WHY IS THERE 2x THE SAME THING ??? (FewerElk note)
+#app = Ursina(development_mode=True)
+#window.title = "RE:World"
 
 
 
 if __name__ == '__main__':
-    app = Ursina()
+    ######################################
+    ######################################
+    ######### ICON TO DEBUG ##############
+    ######################################
+    ######################################
+    app = Ursina(title="RE:WORLD", icon="assets\\icon\\reworldicon.png", development_mode=True)  #default icon for the moment, but can't be loaded. hum...
 
     screen = None  # for global statement
     modding.init()
