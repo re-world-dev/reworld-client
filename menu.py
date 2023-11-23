@@ -30,28 +30,28 @@ class Menu(object):
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="RE:WORLD", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.bplay = Button(text='Play', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
+        self.title = Text(text="RE:WORLD", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.bplay = Button(text="Play", y=0, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
         self.bplay.on_click = self.play_menu
         self.bplay.tooltip = Tooltip('Start a new journey')
-        self.bpExit = Button(text='Exit', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.bpExit = Button(text="Exit", y=-.1, scale=0.1, color=color.orange, text_origin=(-.100, -0.1))
         self.bpExit.on_click = application.quit
-        self.bpExit.tooltip = Tooltip('Exit')
+        self.bpExit.tooltip = Tooltip('See you soon !')
 
     def play_menu(self):
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="Select a mode", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.bsolo = Button(text='SOLO', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
+        self.title = Text(text="Select a mode", wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.bsolo = Button(text='Solo', color=color.azure, scale=.15, text_origin=(-.100, -0.1), x=-0.8)
         self.bsolo.on_click = application.quit
         self.bsolo.tooltip = Tooltip('Start a new journey')
 
-        self.bmulti = Button(text='MULTIPLAYERS', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.bmulti = Button(text='Multiplayer', color=color.azure, scale=.15, text_origin=(-.100, -0.1), x=-0.8, y=-0.15)
         self.bmulti.on_click = self.server_list
         self.bmulti.tooltip = Tooltip('Multiplayer mode')
 
-        self.breturn = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.2)
+        self.breturn = Button(text='Return', color=color.azure, scale=.15, text_origin=(-.100, -0.1), x=-0.8, y=-0.3)
         self.breturn.on_click = self.home_menu
         self.breturn.tooltip = Tooltip('Return to home menu')
 
@@ -59,7 +59,7 @@ class Menu(object):
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="SERVER LIST", wordwrap=10, x=-0.9, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.title = Text(text="SERVER LIST", wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
         self.baddsrv = Button(text='Add a server', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
         self.baddsrv.on_click = self.add_server
         self.baddsrv.tooltip = Tooltip('Add a new online game area !')
