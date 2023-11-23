@@ -2,6 +2,8 @@ from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from direct.stdpy import thread 
 from libs import richpresence
+import client_main as client
+from threading import Thread
 
 if __name__ == "__main__":
     raise Exception("Please run the main.py file !")
@@ -67,8 +69,37 @@ class Menu(object):
 
         for i, ip in enumerate(self.server_list_ips):
             btn = Button(text=ip, y=i*-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
-            #btn.on_click = self.connect
+            btn.on_click = lambda: self.connect(ip)
             self.server_objects.append(btn)
+
+    def connect(self, ip):
+        self.ip = ip
+        self.clear()
+        Text.default_resolution = 1080 * Text.size
+        self.title = Text(text="Connecting...\nPlease wait.", wordwrap=0, x=-0, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.stop = Button(text="CANCEL", y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+        self.stop.on_click = self.cancel_co
+        
+        t = Thread(target=self._connect)
+        t.start()
+
+    def cancel_co(self):
+        self.cl.socket.close()
+        time.sleep(1)
+        self.server_list()
+
+    def _connect(self):
+        self.cl = client.Client(self.ip, 9605)
+        try:
+            self.cl.connect()
+        except Exception as e:
+            self.clear()
+            Text.default_resolution = 1080 * Text.size
+            self.title = Text(text=f"Failed to connect to the server:\n{e}", wordwrap=0, x=-5, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+            self.stop = Button(text="Return to server list", y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+            self.stop.on_click = self.server_list
+        ...
+
 
     def add_server(self):
         self.clear()
@@ -93,6 +124,11 @@ class Menu(object):
 
     def clear(self):
         #home_menu
+        try:
+            destroy(self.title)
+            destroy(self.stop)
+        except:
+            pass
         try:
             destroy(self.title)
             destroy(self.bplay)
