@@ -11,20 +11,16 @@ if __name__ == "__main__":
 
 class Menu(object):
     def __init__(self, app):
-        video = 'C:\\Users\\gabri\\Documents\\Github\\recl\\reworld-client\\assets\\sound\\music\\1.wav'
-        video = 'assets/sound/music/a.wav'
+        video = 'assets/sound/music/b.mp4'
 
-        from pydub import AudioSegment
-        from pydub.playback import play
-
-        song = AudioSegment.from_wav(video)
-        play(song)
+        e4 = Entity(model='cube', texture=video, scale=(0, 0))
+        video_sound = app.loader.loadSfx(video)
+        video_sound.play()
 
         self.app = app
         self.server_list_ips = []
         self.server_objects = []
         self.load_servers()
-        #Entity(model='cube', texture='assets/background/homemenu/background.png')
         self.home_menu()
 
     def load_servers(self):
@@ -49,6 +45,10 @@ class Menu(object):
         self.bpExit = Button(text="Exit", y=-.1, scale=0.1, color=color.orange, text_origin=(-.100, -0.1))
         self.bpExit.on_click = application.quit
         self.bpExit.tooltip = Tooltip('See you soon !')
+
+        self.bcredits = Button(text="Credits", y=-.4, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+        self.bcredits.on_click = self.credits
+        self.bcredits.tooltip = Tooltip('Show credits')
 
     def play_menu(self):
         self.clear()
@@ -134,9 +134,37 @@ class Menu(object):
             file.write(ip + "\n")
         self.server_list()
 
+    def credits(self):
+        self.clear()
+        Text.default_resolution = 1080 * Text.size
+        self.title = Text(text="CREDITS", wordwrap=50, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.dev_t = Text(text="Developpers : ", wordwrap=50, y=0, scale=1.5)
+        self.dev_1 = Text(text="EletrixTime (https://github.com/EletrixtimeYT)", wordwrap=50, y=-0.1, scale=1.5)
+        self.dev_2 = Text(text="FewerElk (https://github.com/FewerElk)", wordwrap=50, y=-0.2, scale=1.5)
+        self.dev_3 = Text(text="coder1max (https://github.com/coder1max)", wordwrap=50, y=-0.3, scale=1.5)
+        #I hope I don't forget some one...
+
+        self.titlem = Text(text="Music by :", wordwrap=10, y=-0.4, scale=1.5)
+        self.m = Text(text="FewerElk (https://github.com/FewerElk)", wordwrap=10, y=-0.5, scale=1.5)
+
+        self.bret = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.4)
+        self.bret.on_click = self.home_menu
+
     def clear(self):
+        try:
+            destroy(self.title)
+            destroy(self.dev_t)
+            destroy(self.dev_1)
+            destroy(self.dev_2)
+            destroy(self.dev_3)
+            destroy(self.titlem)
+            destroy(self.m)
+            destroy(self.bret)
+        except:
+            pass
         #home_menu
         try:
+            destroy(self.bcredits)
             destroy(self.title)
             destroy(self.stop)
         except:

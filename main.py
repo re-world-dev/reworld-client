@@ -45,7 +45,7 @@ if __name__ == '__main__':
     ######### ICON TO DEBUG ##############
     ######################################
     ######################################
-    app = Ursina(title="RE:WORLD", icon="assets\\icon\\reworldicon.png", development_mode=True)  #default icon for the moment, but can't be loaded. hum...
+    app = Ursina(title="RE:WORLD", icon="assets/icon/reworldicon.png", development_mode=True, fullscreen=True)  #default icon for the moment, but can't be loaded. hum...
 
     screen = None  # for global statement
     modding.init()
