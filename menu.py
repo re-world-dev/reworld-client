@@ -141,17 +141,17 @@ class Menu(object):
     def credits(self):
         self.clear()
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="CREDITS", wordwrap=50, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.dev_t = Text(text="Developpers : ", wordwrap=50, y=0, scale=1.5)
+        self.title = Text(text=self.dic["menu.credits.title.all"], wordwrap=50, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.dev_t = Text(text=self.dic["menu.credits.title.dev"], wordwrap=50, y=0, scale=1.5)
         self.dev_1 = Text(text="EletrixTime (https://github.com/EletrixtimeYT)", wordwrap=50, y=-0.1, scale=1.5)
         self.dev_2 = Text(text="FewerElk (https://github.com/FewerElk)", wordwrap=50, y=-0.2, scale=1.5)
         self.dev_3 = Text(text="coder1max (https://github.com/coder1max)", wordwrap=50, y=-0.3, scale=1.5)
         #I hope I don't forget some one...
 
-        self.titlem = Text(text="Music by :", wordwrap=10, y=-0.4, scale=1.5)
+        self.titlem = Text(text=self.dic["menu.credits.title.music"], wordwrap=10, y=-0.4, scale=1.5)
         self.m = Text(text="FewerElk (https://github.com/FewerElk)", wordwrap=10, y=-0.5, scale=1.5)
 
-        self.bret = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.4)
+        self.bret = Button(text=self.dic["menu.credits.exit.button"], color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.4)
         self.bret.on_click = self.home_menu
 
     def clear(self):

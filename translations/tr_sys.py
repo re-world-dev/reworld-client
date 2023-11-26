@@ -34,7 +34,12 @@ class Translation(object):
             "menu.servercreation.add.button": "Add",
             "menu.servercreation.add.tooltip": "Add the server to your server list",
             "menu.servercreation.exit.button": "Return",
-            "menu.servercreation.exit.tooltip": "Return to server list"
+            "menu.servercreation.exit.tooltip": "Return to server list",
+
+            "menu.credits.title.all": "CREDITS", 
+            "menu.credits.title.dev": "Developpers : ",
+            "menu.credits.title.music": "Music by : ", 
+            "menu.credits.exit.button": "Return"
              }
 
     FR_FR = {
@@ -69,7 +74,12 @@ class Translation(object):
             "menu.servercreation.add.button": "Ajouter",
             "menu.servercreation.add.tooltip": "Ajouter le serveur à votre liste des serveurs",
             "menu.servercreation.exit.button": "Retour",
-            "menu.servercreation.exit.tooltip": "Retour à la liste des serveurs"
+            "menu.servercreation.exit.tooltip": "Retour à la liste des serveurs",
+
+            "menu.credits.title.all": "CRÉDITS", 
+            "menu.credits.title.dev": "Developpeurs : ",
+            "menu.credits.title.music": "Musique de : ", 
+            "menu.credits.exit.button": "Retour"
              }
 
 
