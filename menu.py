@@ -92,8 +92,8 @@ class Menu(object):
         self.ip = ip
         self.clear()
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="Connecting...\nPlease wait.", wordwrap=0, x=-0, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.stop = Button(text="CANCEL", y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+        self.title = Text(text=self.dic["menu.connection.label.working"], wordwrap=0, x=-0, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.stop = Button(text=self.dic["menu.connection.stop.button"], y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
         self.stop.on_click = self.cancel_co
         
         t = Thread(target=self._connect)
@@ -111,8 +111,8 @@ class Menu(object):
         except Exception as e:
             self.clear()
             Text.default_resolution = 1080 * Text.size
-            self.title = Text(text=f"Failed to connect to the server:\n{e}", wordwrap=0, x=-5, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-            self.stop = Button(text="Return to server list", y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+            self.title = Text(text=self.dic["menu.connection.failed.label"].format(e), wordwrap=0, x=-5, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+            self.stop = Button(text=self.dic["menu.connection.failed.button"], y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
             self.stop.on_click = self.server_list
         ...
 

@@ -22,7 +22,13 @@ class Translation(object):
             "menu.serverlist.add.button": "Add a server", 
             "menu.serverlist.add.tooltip": "Add a new online game area !", 
             "menu.serverlist.return.button": "Return", 
-            "menu.serverlist.return.tooltip": "Return to play menu"
+            "menu.serverlist.return.tooltip": "Return to play menu", 
+
+            "menu.connection.label.working": "Connecting...\nPlease wait.",
+            "menu.connection.stop.button": "CANCEL", 
+
+            "menu.connection.failed.label": "Failed to connect to the server:\n{0}", 
+            "menu.connection.failed.button": "Return to serverlist"
              }
 
     FR_FR = {
@@ -45,7 +51,13 @@ class Translation(object):
             "menu.serverlist.add.button": "Ajouter un serveur", 
             "menu.serverlist.add.tooltip": "Ajouter un nouvel espace de jeu en ligne !", 
             "menu.serverlist.return.button": "Retour", 
-            "menu.serverlist.return.tooltip": "Retourner au menu de jeu"
+            "menu.serverlist.return.tooltip": "Retourner au menu de jeu", 
+
+            "menu.connection.label.working": "Connexion en cour...\nVeuillez patienter.",
+            "menu.connection.stop.button": "ANNULER", 
+
+            "menu.connection.failed.label": "Echec de la connexion au server :\n{0}", 
+            "menu.connection.failed.button": "Retour à la liste des serveurs"
              }
 
 
