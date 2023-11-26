@@ -75,13 +75,13 @@ class Menu(object):
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="SERVER LIST", wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.baddsrv = Button(text='Add a server', color=color.azure, scale=(.15, .10), text_origin=(-.100, -0.1), x=-0.8)
+        self.title = Text(text=self.dic["menu.serverlist.title"], wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.baddsrv = Button(text=self.dic["menu.serverlist.add.button"], color=color.azure, scale=(.15, .10), text_origin=(-.100, -0.1), x=-0.8)
         self.baddsrv.on_click = self.add_server
-        self.baddsrv.tooltip = Tooltip('Add a new online game area !')
-        self.bret = Button(text='Return', color=color.azure, scale=(.15, .10), text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.baddsrv.tooltip = Tooltip(self.dic["menu.serverlist.add.tooltip"])
+        self.bret = Button(text=self.dic["menu.serverlist.return.button"], color=color.azure, scale=(.15, .10), text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
         self.bret.on_click = self.play_menu
-        self.bret.tooltip = Tooltip('Return to play menu')
+        self.bret.tooltip = Tooltip(self.dic["menu.serverlist.return.tooltip"])
 
         for i, ip in enumerate(self.server_list_ips):
             btn = Button(text=ip, y=i*-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))

@@ -16,7 +16,13 @@ class Translation(object):
             "menu.play.multi.button": "Multiplayer",
             "menu.play.multi.tooltip": "Multiplayer mode",
             "menu.play.return.button": "Return",
-            "menu.play.return.tooltip": "Return to home menu"
+            "menu.play.return.tooltip": "Return to home menu", 
+
+            "menu.serverlist.title": "SERVER LIST", 
+            "menu.serverlist.add.button": "Add a server", 
+            "menu.serverlist.add.tooltip": "Add a new online game area !", 
+            "menu.serverlist.return.button": "Return", 
+            "menu.serverlist.return.tooltip": "Return to play menu"
              }
 
     FR_FR = {
@@ -33,7 +39,13 @@ class Translation(object):
             "menu.play.multi.button": "Multijoueur",
             "menu.play.multi.tooltip": "Mode multijoueur",
             "menu.play.return.button": "Retour",
-            "menu.play.return.tooltip": "Retourner à l'accueil"
+            "menu.play.return.tooltip": "Retourner à l'accueil", 
+
+            "menu.serverlist.title": "LISTE DES SERVEURS", 
+            "menu.serverlist.add.button": "Ajouter un serveur", 
+            "menu.serverlist.add.tooltip": "Ajouter un nouvel espace de jeu en ligne !", 
+            "menu.serverlist.return.button": "Retour", 
+            "menu.serverlist.return.tooltip": "Retourner au menu de jeu"
              }
 
 
