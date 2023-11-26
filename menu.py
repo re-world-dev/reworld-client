@@ -4,12 +4,22 @@ from direct.stdpy import thread
 from libs import richpresence
 import client_main as client
 from threading import Thread
+from random import *
 
 if __name__ == "__main__":
     raise Exception("Please run the main.py file !")
 
 class Menu(object):
     def __init__(self, app):
+        video = 'C:\\Users\\gabri\\Documents\\Github\\recl\\reworld-client\\assets\\sound\\music\\1.wav'
+        video = 'assets/sound/music/a.wav'
+
+        from pydub import AudioSegment
+        from pydub.playback import play
+
+        song = AudioSegment.from_wav(video)
+        play(song)
+
         self.app = app
         self.server_list_ips = []
         self.server_objects = []
@@ -30,7 +40,7 @@ class Menu(object):
     def home_menu(self):
         self.clear()
         # Sky(texture=modding.sky_getskypath())
-        Sky(texture="assests/background/homemenu/background3.png")
+        Sky(texture="assets/background/homemenu/background1.png")
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text="RE:WORLD", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
         self.bplay = Button(text="Play", y=0, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
