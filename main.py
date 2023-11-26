@@ -32,6 +32,9 @@ console.info("Main/Render : Game init")
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 from direct.stdpy import thread 
+import os
+import translations.tr_sys as tr
+import translations.tr_config as trc
 
 # WHY IS THERE 2x THE SAME THING ??? (FewerElk note)
 #app = Ursina(development_mode=True)
@@ -45,10 +48,12 @@ if __name__ == '__main__':
     ######### ICON TO DEBUG ##############
     ######################################
     ######################################
-    app = Ursina(title="RE:WORLD", icon="assets\\icon\\reworldicon.png", development_mode=True)  #default icon for the moment, but can't be loaded. hum...
+    translations_system = tr.Translation(trc.lang)
+
+    app = Ursina(title="RE:WORLD", icon="\\assets\\icon\\reicon.ico", development_mode=True, fullscreen=True)  #default icon for the moment, but can't be loaded. hum...
 
     screen = None  # for global statement
     modding.init()
-    m = menu.Menu(app)
+    m = menu.Menu(app, translations_system)
     #richpresence.start() >> Desactived due a bug
     app.run()

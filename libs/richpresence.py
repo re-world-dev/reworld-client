@@ -23,7 +23,7 @@ try:
                 while True:
                     time.sleep(15)
         except Exception as e:
-            console.alert(f"A error occured in richpresence.py : {e}")
+            console.alert(f"An error occured in richpresence.py : {e}")
     def richpresence_set(state,details):
         stategame = state
         detail = details
