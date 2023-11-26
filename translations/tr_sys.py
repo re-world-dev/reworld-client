@@ -28,7 +28,13 @@ class Translation(object):
             "menu.connection.stop.button": "CANCEL", 
 
             "menu.connection.failed.label": "Failed to connect to the server:\n{0}", 
-            "menu.connection.failed.button": "Return to serverlist"
+            "menu.connection.failed.button": "Return to serverlist", 
+
+            "menu.servercreation.title": "ADD A SERVER",
+            "menu.servercreation.add.button": "Add",
+            "menu.servercreation.add.tooltip": "Add the server to your server list",
+            "menu.servercreation.exit.button": "Return",
+            "menu.servercreation.exit.tooltip": "Return to server list"
              }
 
     FR_FR = {
@@ -57,7 +63,13 @@ class Translation(object):
             "menu.connection.stop.button": "ANNULER", 
 
             "menu.connection.failed.label": "Echec de la connexion au server :\n{0}", 
-            "menu.connection.failed.button": "Retour à la liste des serveurs"
+            "menu.connection.failed.button": "Retour à la liste des serveurs", 
+
+            "menu.servercreation.title": "AJOUTER UN SERVEUR",
+            "menu.servercreation.add.button": "Ajouter",
+            "menu.servercreation.add.tooltip": "Ajouter le serveur à votre liste des serveurs",
+            "menu.servercreation.exit.button": "Retour",
+            "menu.servercreation.exit.tooltip": "Retour à la liste des serveurs"
              }
 
 

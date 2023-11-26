@@ -120,16 +120,16 @@ class Menu(object):
     def add_server(self):
         self.clear()
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="ADD A SERVER", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.title = Text(text=self.dic["menu.servercreation.title"], wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
         self.entry = InputField(label="Server ip", wordwrap=10, color=color.white)
 
-        self.bconfirm = Button(text='Add', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.1)
+        self.bconfirm = Button(text=self.dic["menu.servercreation.add.button"], color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.1)
         self.bconfirm.on_click = self.confirm_add_server
-        self.bconfirm.tooltip = Tooltip('Add the server to your list')
+        self.bconfirm.tooltip = Tooltip(self.dic["menu.servercreation.add.tooltip"])
 
-        self.bcancel = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.2)
+        self.bcancel = Button(text=self.dic["menu.servercreation.exit.button"], color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.2)
         self.bcancel.on_click = self.server_list
-        self.bcancel.tooltip = Tooltip('Return to server list')
+        self.bcancel.tooltip = Tooltip(self.dic["menu.servercreation.exit.tooltip"])
 
     def confirm_add_server(self):
         ip = self.entry.text
