@@ -81,6 +81,86 @@ class Translation(object):
             "menu.credits.title.music": "Musique de : ", 
             "menu.credits.exit.button": "Retour"
              }
+    
+    RU_RU = {
+            "menu.home.play.button": "Play", 
+            "menu.home.play.tooltip": "Start a new journey",
+            "menu.home.exit.button": "Exit",
+            "menu.home.exit.tooltip": "See you soon !",
+            "menu.home.credits.button": "Credits",
+            "menu.home.credits.tooltip": "Show credits", 
+
+            "menu.play.title": "Select a game mode", 
+            "menu.play.solo.button": "Solo",
+            "menu.play.solo.tooltip": "Singleplayer", 
+            "menu.play.multi.button": "Multiplayer",
+            "menu.play.multi.tooltip": "Multiplayer mode",
+            "menu.play.return.button": "Return",
+            "menu.play.return.tooltip": "Return to home menu", 
+
+            "menu.serverlist.title": "SERVER LIST", 
+            "menu.serverlist.add.button": "Add a server", 
+            "menu.serverlist.add.tooltip": "Add a new online game area !", 
+            "menu.serverlist.return.button": "Return", 
+            "menu.serverlist.return.tooltip": "Return to play menu", 
+
+            "menu.connection.label.working": "Connecting...\nPlease wait.",
+            "menu.connection.stop.button": "CANCEL", 
+
+            "menu.connection.failed.label": "Failed to connect to the server:\n{0}", 
+            "menu.connection.failed.button": "Return to serverlist", 
+
+            "menu.servercreation.title": "ADD A SERVER",
+            "menu.servercreation.add.button": "Add",
+            "menu.servercreation.add.tooltip": "Add the server to your server list",
+            "menu.servercreation.exit.button": "Return",
+            "menu.servercreation.exit.tooltip": "Return to server list",
+
+            "menu.credits.title.all": "CREDITS", 
+            "menu.credits.title.dev": "Developpers : ",
+            "menu.credits.title.music": "Music by : ", 
+            "menu.credits.exit.button": "Return"
+             }
+    
+    ES_ES = {
+            "menu.home.play.button": "Play", 
+            "menu.home.play.tooltip": "Start a new journey",
+            "menu.home.exit.button": "Exit",
+            "menu.home.exit.tooltip": "See you soon !",
+            "menu.home.credits.button": "Credits",
+            "menu.home.credits.tooltip": "Show credits", 
+
+            "menu.play.title": "Select a game mode", 
+            "menu.play.solo.button": "Solo",
+            "menu.play.solo.tooltip": "Singleplayer", 
+            "menu.play.multi.button": "Multiplayer",
+            "menu.play.multi.tooltip": "Multiplayer mode",
+            "menu.play.return.button": "Return",
+            "menu.play.return.tooltip": "Return to home menu", 
+
+            "menu.serverlist.title": "SERVER LIST", 
+            "menu.serverlist.add.button": "Add a server", 
+            "menu.serverlist.add.tooltip": "Add a new online game area !", 
+            "menu.serverlist.return.button": "Return", 
+            "menu.serverlist.return.tooltip": "Return to play menu", 
+
+            "menu.connection.label.working": "Connecting...\nPlease wait.",
+            "menu.connection.stop.button": "CANCEL", 
+
+            "menu.connection.failed.label": "Failed to connect to the server:\n{0}", 
+            "menu.connection.failed.button": "Return to serverlist", 
+
+            "menu.servercreation.title": "ADD A SERVER",
+            "menu.servercreation.add.button": "Add",
+            "menu.servercreation.add.tooltip": "Add the server to your server list",
+            "menu.servercreation.exit.button": "Return",
+            "menu.servercreation.exit.tooltip": "Return to server list",
+
+            "menu.credits.title.all": "CREDITS", 
+            "menu.credits.title.dev": "Developpers : ",
+            "menu.credits.title.music": "Music by : ", 
+            "menu.credits.exit.button": "Return"
+             }
 
 
     def __init__(self, lang="en_en"):
@@ -91,6 +171,10 @@ class Translation(object):
              return self.EN_EN
         elif self.lang == "fr_fr":
             return self.FR_FR
+        elif self.lang == "ru_ru":
+            return self.RU_RU
+        elif self.lang == "es_es":
+            return self.ES_ES
         else:
             raise TranslationException("An unknow language was gived.")
 
