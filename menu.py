@@ -92,8 +92,8 @@ class Menu(object):
         self.ip = ip
         self.clear()
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="Connecting...\nPlease wait.", wordwrap=0, x=-0, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.stop = Button(text="CANCEL", y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+        self.title = Text(text=self.dic["menu.connection.label.working"], wordwrap=0, x=-0, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.stop = Button(text=self.dic["menu.connection.stop.button"], y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
         self.stop.on_click = self.cancel_co
         
         t = Thread(target=self._connect)
@@ -111,8 +111,8 @@ class Menu(object):
         except Exception as e:
             self.clear()
             Text.default_resolution = 1080 * Text.size
-            self.title = Text(text=f"Failed to connect to the server:\n{e}", wordwrap=0, x=-5, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-            self.stop = Button(text="Return to server list", y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+            self.title = Text(text=self.dic["menu.connection.failed.label"].format(e), wordwrap=0, x=-5, y=0, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+            self.stop = Button(text=self.dic["menu.connection.failed.button"], y=-0.1, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
             self.stop.on_click = self.server_list
         ...
 
@@ -120,16 +120,16 @@ class Menu(object):
     def add_server(self):
         self.clear()
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="ADD A SERVER", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.title = Text(text=self.dic["menu.servercreation.title"], wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
         self.entry = InputField(label="Server ip", wordwrap=10, color=color.white)
 
-        self.bconfirm = Button(text='Add', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.1)
+        self.bconfirm = Button(text=self.dic["menu.servercreation.add.button"], color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.1)
         self.bconfirm.on_click = self.confirm_add_server
-        self.bconfirm.tooltip = Tooltip('Add the server to your list')
+        self.bconfirm.tooltip = Tooltip(self.dic["menu.servercreation.add.tooltip"])
 
-        self.bcancel = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.2)
+        self.bcancel = Button(text=self.dic["menu.servercreation.exit.button"], color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.2)
         self.bcancel.on_click = self.server_list
-        self.bcancel.tooltip = Tooltip('Return to server list')
+        self.bcancel.tooltip = Tooltip(self.dic["menu.servercreation.exit.tooltip"])
 
     def confirm_add_server(self):
         ip = self.entry.text
@@ -141,17 +141,17 @@ class Menu(object):
     def credits(self):
         self.clear()
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="CREDITS", wordwrap=50, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.dev_t = Text(text="Developpers : ", wordwrap=50, y=0, scale=1.5)
+        self.title = Text(text=self.dic["menu.credits.title.all"], wordwrap=50, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.dev_t = Text(text=self.dic["menu.credits.title.dev"], wordwrap=50, y=0, scale=1.5)
         self.dev_1 = Text(text="EletrixTime (https://github.com/EletrixtimeYT)", wordwrap=50, y=-0.1, scale=1.5)
         self.dev_2 = Text(text="FewerElk (https://github.com/FewerElk)", wordwrap=50, y=-0.2, scale=1.5)
         self.dev_3 = Text(text="coder1max (https://github.com/coder1max)", wordwrap=50, y=-0.3, scale=1.5)
         #I hope I don't forget some one...
 
-        self.titlem = Text(text="Music by :", wordwrap=10, y=-0.4, scale=1.5)
+        self.titlem = Text(text=self.dic["menu.credits.title.music"], wordwrap=10, y=-0.4, scale=1.5)
         self.m = Text(text="FewerElk (https://github.com/FewerElk)", wordwrap=10, y=-0.5, scale=1.5)
 
-        self.bret = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.4)
+        self.bret = Button(text=self.dic["menu.credits.exit.button"], color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.4)
         self.bret.on_click = self.home_menu
 
     def clear(self):
