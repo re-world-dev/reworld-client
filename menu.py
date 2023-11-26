@@ -33,7 +33,7 @@ class Menu(object):
                     continue
                 self.server_list_ips.append(srv)
 
-    def home_menu(self):
+    def home_menu(self):        #OK
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Sky(texture="assets/background/homemenu/background1.png")
@@ -50,32 +50,32 @@ class Menu(object):
         self.bcredits.on_click = self.credits
         self.bcredits.tooltip = Tooltip('Show credits')
 
-    def play_menu(self):
+    def play_menu(self):        # OK
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text="Select a mode", wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.bsolo = Button(text='Solo', color=color.azure, scale=.15, text_origin=(-.100, -0.1), x=-0.8)
+        self.bsolo = Button(text='Solo', color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8)
         self.bsolo.on_click = application.quit
         self.bsolo.tooltip = Tooltip('Start a new journey')
 
-        self.bmulti = Button(text='Multiplayer', color=color.azure, scale=.15, text_origin=(-.100, -0.1), x=-0.8, y=-0.15)
+        self.bmulti = Button(text='Multiplayer', color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
         self.bmulti.on_click = self.server_list
         self.bmulti.tooltip = Tooltip('Multiplayer mode')
 
-        self.breturn = Button(text='Return', color=color.azure, scale=.15, text_origin=(-.100, -0.1), x=-0.8, y=-0.3)
+        self.breturn = Button(text='Return', color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8, y=-0.2)
         self.breturn.on_click = self.home_menu
         self.breturn.tooltip = Tooltip('Return to home menu')
 
-    def server_list(self):
+    def server_list(self):      #
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text="SERVER LIST", wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.baddsrv = Button(text='Add a server', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8)
+        self.baddsrv = Button(text='Add a server', color=color.azure, scale=(.15, .10), text_origin=(-.100, -0.1), x=-0.8)
         self.baddsrv.on_click = self.add_server
         self.baddsrv.tooltip = Tooltip('Add a new online game area !')
-        self.bret = Button(text='Return', color=color.azure, scale=.10, text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.bret = Button(text='Return', color=color.azure, scale=(.15, .10), text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
         self.bret.on_click = self.play_menu
         self.bret.tooltip = Tooltip('Return to play menu')
 
@@ -117,7 +117,7 @@ class Menu(object):
         self.clear()
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text="ADD A SERVER", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.entry = InputField(label="Server ip", wordwrap=10)
+        self.entry = InputField(label="Server ip", wordwrap=10, color=color.white)
 
         self.bconfirm = Button(text='Add', color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-0.1)
         self.bconfirm.on_click = self.confirm_add_server
