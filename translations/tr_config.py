@@ -1,3 +1,4 @@
 #Languages supported : "en_en", "fr_fr"
+#Languages not translated : "ru_ru", "es_es"
 
-lang="fr_fr"
+lang="en_en"
