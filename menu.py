@@ -10,7 +10,9 @@ if __name__ == "__main__":
     raise Exception("Please run the main.py file !")
 
 class Menu(object):
-    def __init__(self, app):
+    def __init__(self, app, tr):
+        self.tr = tr
+        self.dic = self.tr.gv_tr_dic()
         video = 'assets/sound/music/b.mp4'
 
         e4 = Entity(model='cube', texture=video, scale=(0, 0))
@@ -39,33 +41,35 @@ class Menu(object):
         Sky(texture="assets/background/homemenu/background1.png")
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text="RE:WORLD", wordwrap=10, x=-0.1, y=0.1, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.bplay = Button(text="Play", y=0, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
-        self.bplay.on_click = self.play_menu
-        self.bplay.tooltip = Tooltip('Start a new journey')
-        self.bpExit = Button(text="Exit", y=-.1, scale=0.1, color=color.orange, text_origin=(-.100, -0.1))
-        self.bpExit.on_click = application.quit
-        self.bpExit.tooltip = Tooltip('See you soon !')
 
-        self.bcredits = Button(text="Credits", y=-.4, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+        self.bplay = Button(text=self.dic["menu.home.play.button"], y=0, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+        self.bplay.on_click = self.play_menu
+        self.bplay.tooltip = Tooltip(self.dic["menu.home.play.tooltip"])
+
+        self.bpExit = Button(text=self.dic["menu.home.exit.button"], y=-.1, scale=0.1, color=color.orange, text_origin=(-.100, -0.1))
+        self.bpExit.on_click = application.quit
+        self.bpExit.tooltip = Tooltip(self.dic["menu.home.exit.tooltip"])
+
+        self.bcredits = Button(text=self.dic["menu.home.credits.button"], y=-.4, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
         self.bcredits.on_click = self.credits
-        self.bcredits.tooltip = Tooltip('Show credits')
+        self.bcredits.tooltip = Tooltip(self.dic["menu.home.credits.tooltip"])
 
     def play_menu(self):        # OK
         self.clear()
         # Sky(texture=modding.sky_getskypath())
         Text.default_resolution = 1080 * Text.size
-        self.title = Text(text="Select a mode", wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
-        self.bsolo = Button(text='Solo', color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8)
+        self.title = Text(text=self.dic["menu.play.title"], wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
+        self.bsolo = Button(text=self.dic["menu.play.solo.button"], color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8)
         self.bsolo.on_click = application.quit
-        self.bsolo.tooltip = Tooltip('Start a new journey')
+        self.bsolo.tooltip = Tooltip(self.dic["menu.play.solo.tooltip"])
 
-        self.bmulti = Button(text='Multiplayer', color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
+        self.bmulti = Button(text=self.dic["menu.play.multi.button"], color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
         self.bmulti.on_click = self.server_list
-        self.bmulti.tooltip = Tooltip('Multiplayer mode')
+        self.bmulti.tooltip = Tooltip(self.dic["menu.play.multi.tooltip"])
 
-        self.breturn = Button(text='Return', color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8, y=-0.2)
+        self.breturn = Button(text=self.dic["menu.play.return.button"], color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8, y=-0.2)
         self.breturn.on_click = self.home_menu
-        self.breturn.tooltip = Tooltip('Return to home menu')
+        self.breturn.tooltip = Tooltip(self.dic["menu.play.return.tooltip"])
 
     def server_list(self):      #
         self.clear()
