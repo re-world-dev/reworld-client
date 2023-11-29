@@ -50,6 +50,10 @@ class Menu(object):
         self.bpExit.on_click = application.quit
         self.bpExit.tooltip = Tooltip(self.dic["menu.home.exit.tooltip"])
 
+        self.lg = Button(text=self.dic["menu.langsettings.button"], y=-.3, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
+        self.lg.on_click = self.tr_menu
+        self.lg.tooltip = Tooltip(self.dic["menu.langsettings.tooltip"])
+
         self.bcredits = Button(text=self.dic["menu.home.credits.button"], y=-.4, scale=0.1, color=color.azure, text_origin=(-.100, -0.1))
         self.bcredits.on_click = self.credits
         self.bcredits.tooltip = Tooltip(self.dic["menu.home.credits.tooltip"])
@@ -154,7 +158,39 @@ class Menu(object):
         self.bret = Button(text=self.dic["menu.credits.exit.button"], color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.4)
         self.bret.on_click = self.home_menu
 
+    def tr_menu(self):
+        self.clear()
+
+        Text.default_resolution = 1080 * Text.size
+        self.title = Text(text=self.dic["menu.langsettings.title"], wordwrap=10, x=-0.1, y=0.1, scale=1.5)
+
+        self.en_l = Button(text="English", color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.1)
+        self.en_l.on_click = lambda: self.setlang("en_en")
+
+        self.fr_l = Button(text="Français", color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.3)
+        self.fr_l.on_click = self.en_l.on_click = lambda: self.setlang("fr_fr")
+
+        self.ru_l = Button(text="Русский", color=color.azure, scale=.10, text_origin=(-.100, -0.1), y=-.4)
+        self.ru_l.on_click = self.en_l.on_click = lambda: self.setlang("ru_ru")
+
+    def setlang(self, lang):
+        with open("translations/tr_config.py", "w") as tr_config_file:
+            tr_config_file.write(f"""#RE:WORLD TRANSLATION CONFIG
+#
+#Languages supported : "en_en", "fr_fr", "ru_ru"
+#Languages NOT translated : "es_es"
+
+lang="{lang}" """)
+            self.tr.lang = lang
+            self.dic = self.tr.gv_tr_dic()
+
+            self.home_menu()
+
     def clear(self):
+        try:
+            destroy(self.lg)
+        except:
+            pass
         try:
             destroy(self.title)
             destroy(self.dev_t)
@@ -200,6 +236,12 @@ class Menu(object):
             destroy(self.entry)
             destroy(self.bconfirm)
             destroy(self.bcancel)
+        except:
+            pass
+        try:
+            destroy(self.en_l)
+            destroy(self.fr_l)
+            destroy(self.ru_l)
         except:
             pass
         try:
