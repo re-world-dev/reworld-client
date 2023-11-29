@@ -1,4 +1,6 @@
-#Languages supported : "en_en", "fr_fr"
-#Languages not translated : "ru_ru", "es_es"
+#RE:WORLD TRANSLATION CONFIG
+#
+#Languages supported : "en_en", "fr_fr", "ru_ru"
+#Languages NOT translated : "es_es"
 
-lang="en_en"
+lang="en_en" 
