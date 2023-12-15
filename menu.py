@@ -25,6 +25,12 @@ class Menu(object):
         self.load_servers()
         self.home_menu()
 
+    def solo(self):
+        self.clear()
+        import game
+        gm = game.Game(self.app, self)
+        gm.add_player()
+
     def load_servers(self):
         """Load the servers from the file"""
         with open("saves/servers/serverlist.txt", 'r') as file:
@@ -64,7 +70,7 @@ class Menu(object):
         Text.default_resolution = 1080 * Text.size
         self.title = Text(text=self.dic["menu.play.title"], wordwrap=10, x=-0.85, y=0.15, scale=1.5)  # Augmentez la valeur de 'scale' pour agrandir le texte.
         self.bsolo = Button(text=self.dic["menu.play.solo.button"], color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8)
-        self.bsolo.on_click = application.quit
+        self.bsolo.on_click = self.solo
         self.bsolo.tooltip = Tooltip(self.dic["menu.play.solo.tooltip"])
 
         self.bmulti = Button(text=self.dic["menu.play.multi.button"], color=color.azure, scale=(.15, 0.1), text_origin=(-.100, -0.1), x=-0.8, y=-0.1)
