@@ -48,5 +48,14 @@ def ok():
     app.run()
 
 if __name__ == '__main__':
-    lgsys = account_sys.AccountSystem(ok=ok)
-    lgsys.home()
+    #lgsys = account_sys.AccountSystem(ok=ok)
+    #lgsys.home()
+    
+    # to restore (just for dev version)
+    translations_system = tr.Translation(trc.lang)
+    app = Ursina(title="RE:WORLD", icon="\\assets\\icon\\reicon.ico", development_mode=True, fullscreen=False)
+    import game
+    a = game.Game()
+    a.add_player()
+    #m = menu.Menu(app, translations_system)
+    app.run()

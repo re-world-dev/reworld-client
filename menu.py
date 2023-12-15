@@ -13,7 +13,7 @@ class Menu(object):
     def __init__(self, app, tr):
         self.tr = tr
         self.dic = self.tr.gv_tr_dic()
-        video = 'assets/sound/music/b.mp4'
+        video = 'assets/sound/music/re_main_theme.mp4'
 
         e4 = Entity(model='cube', texture=video, scale=(0, 0))
         video_sound = app.loader.loadSfx(video)
