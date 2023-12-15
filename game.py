@@ -47,6 +47,7 @@ class Game(Entity):
     def update(self):
         if held_keys["left shift"] == 1:
             self.player.camera_pivot.y = 1.5
+            self.player.speed = 2.5
         elif held_keys["left control"] == 1:
             self.player.speed = 15
         else:
