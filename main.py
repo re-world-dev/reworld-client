@@ -53,9 +53,13 @@ if __name__ == '__main__':
     
     # to restore (just for dev version)
     translations_system = tr.Translation(trc.lang)
+    #app = Ursina(title="RE:WORLD", icon="\\assets\\icon\\reicon.ico", development_mode=True, fullscreen=False)
+    #import game
+    #a = game.Game()
+    #a.add_player()
+    ##m = menu.Menu(app, translations_system)
+    #app.run()
+
     app = Ursina(title="RE:WORLD", icon="\\assets\\icon\\reicon.ico", development_mode=True, fullscreen=False)
-    import game
-    a = game.Game()
-    a.add_player()
-    #m = menu.Menu(app, translations_system)
+    m = menu.Menu(app, translations_system)
     app.run()
