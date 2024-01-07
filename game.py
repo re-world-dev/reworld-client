@@ -30,6 +30,8 @@ class Game(Entity):
 
         t1 = WallTool()
 
+        self.inventory = Inventory(self)
+
 
     def on_escape(self):
         destroy(self.player)
@@ -42,9 +44,10 @@ class Game(Entity):
         self.player_list.append(pl)
 
     def input(self, key):
-
         if key == "escape":
             self.on_escape()
+        if key == "e":
+            self.inventory.toggle()
 
     def update(self):
         if held_keys["left shift"] == 1:
@@ -84,6 +87,50 @@ class Tool(object):
 
     def action_2(self):
         pass
+
+class Stack(object):
+    def __init__(self, id:int, inv):
+        self.id = id
+        self.inv = inv
+        self.item = None
+        
+    def set(self, item:Tool):
+        self.item = item
+
+class Inventory(object):
+    def __init__(self, player:Game):
+        self.player = player
+        #Stack (name_id)
+        #To expand later
+        self.hand_0 = Stack(0, self)
+        self.c1_1 = Stack(1, self)
+        self.c2_2 = Stack(2, self)
+        self.c3_3 = Stack(3, self)
+        self.c4_4 = Stack(4, self)
+        self.state = 0
+
+    def open(self):
+        self.overlay = [Button(text="", color=color.white, scale=(.05, 0.05), x=0, y=0), 
+                        Button(text="", color=color.white, scale=(.05, 0.05), x=.1, y=-.15), 
+                        Button(text="", color=color.white, scale=(.05, 0.05), x=.2, y=-.15), 
+                        Button(text="", color=color.white, scale=(.05, 0.05), x=.3, y=-.15), 
+                        Button(text="", color=color.white, scale=(.05, 0.05), x=.4, y=-.15)]
+        self.state = 1
+        
+    def close(self):
+        for btn in self.overlay:
+            #specific overlay class later ?
+            destroy(btn)
+        self.overlay = []
+        self.state = 0
+
+    def toggle(self):
+        if self.state == 0:
+            self.open()
+        elif self.state == 1:
+            self.close()
+        else:
+            raise RuntimeError("Something went wrong with the inventory : an unknow state was entered.")
 
 class WallTool(Tool):
     def __init__(self):
