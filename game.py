@@ -28,6 +28,8 @@ class Game(Entity):
 
         self.player.speed = 7.5
 
+        t1 = WallTool()
+
 
     def on_escape(self):
         destroy(self.player)
@@ -71,3 +73,18 @@ class Player(object):
         pe = Entity(model="assets/player/test.obj", scale_y=1, texture=self.pt, collider="box")
         pe.position = Vec3(self.x, self.y, self.z)
         self.obj_lst.append(pe)
+
+class Tool(object):
+    def __init__(self, model, texture=None):
+        self.model = model
+        self.self = Entity(model=model, parent=camera.ui, scale=1, color=color.gold, position=(.2, -.2))
+
+    def action_1(self):
+        pass
+
+    def action_2(self):
+        pass
+
+class WallTool(Tool):
+    def __init__(self):
+        super().__init__(self, "assets/tools/walltool/walltool.obj")
