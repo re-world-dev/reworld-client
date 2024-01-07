@@ -45,9 +45,17 @@ class Game(Entity):
 
     def input(self, key):
         if key == "escape":
+            if self.inventory.state == 1:
+                self.inventory.close()
             self.on_escape()
         if key == "e":
             self.inventory.toggle()
+        if key == "scroll up":
+            if self.inventory.state == 1:
+                self.inventory.right()
+        if key == "scroll down":
+            if self.inventory.state == 1:
+                self.inventory.left()
 
     def update(self):
         if held_keys["left shift"] == 1:
@@ -108,21 +116,53 @@ class Inventory(object):
         self.c3_3 = Stack(3, self)
         self.c4_4 = Stack(4, self)
         self.state = 0
+        self.selected = 0
 
     def open(self):
-        self.overlay = [Button(text="", color=color.white, scale=(.05, 0.05), x=0, y=0), 
+        self.overlay = [Button(text="", color=color.blue, scale=(.05, 0.05), x=0, y=0), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.1, y=-.15), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.2, y=-.15), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.3, y=-.15), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.4, y=-.15)]
         self.state = 1
-        
+
     def close(self):
         for btn in self.overlay:
             #specific overlay class later ?
             destroy(btn)
         self.overlay = []
         self.state = 0
+
+    def unselect_all(self):
+        if self.state == 1:
+            for btn in self.overlay:
+                btn.color = color.white
+        else:
+            print("the unselect_all method was called but no inventory was open !")
+
+    def select(self, id):
+        if self.state == 1:
+            self.unselect_all()
+            btn = self.overlay[id]
+            btn.color = color.blue
+        else:
+            print("the select method was called but no inventory was open !")
+
+    def left(self):
+        self.selected += 1
+        try:
+            self.select(self.selected)
+        except IndexError:
+            self.selected = 0
+            self.select(self.selected)
+
+    def right(self):
+        self.selected -= 1
+        try:
+            self.select(self.selected)
+        except IndexError:
+            self.selected = len(self.overlay) - 1
+            self.select(self.selected)
 
     def toggle(self):
         if self.state == 0:
