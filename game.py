@@ -29,6 +29,8 @@ class Game(Entity):
         self.player.speed = 7.5
 
         t1 = WallTool()
+        i1= Item(-1, 10, 2) 
+
 
         self.inventory = Inventory(self)
 
@@ -119,12 +121,13 @@ class Inventory(object):
         self.selected = 0
 
     def open(self):
-        self.overlay = [Button(text="", color=color.blue, scale=(.05, 0.05), x=0, y=0), 
+        self.overlay = [Button(text="", color=color.white, scale=(.05, 0.05), x=0, y=0), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.1, y=-.15), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.2, y=-.15), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.3, y=-.15), 
                         Button(text="", color=color.white, scale=(.05, 0.05), x=.4, y=-.15)]
         self.state = 1
+        self.select(self.selected)
 
     def close(self):
         for btn in self.overlay:
@@ -175,3 +178,9 @@ class Inventory(object):
 class WallTool(Tool):
     def __init__(self):
         super().__init__(self, "assets/tools/walltool/walltool.obj")
+
+class Item(Entity):
+    def __init__(self, x, y, z):
+        super().__init__(model="assets\player\test.obj", color=color.gold, x=x, y=y, z=z, scale=1)
+
+        self.on_click = destroy(self)
